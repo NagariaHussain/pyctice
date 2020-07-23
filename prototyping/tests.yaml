@@ -1,0 +1,25 @@
+-
+  -
+    type: STDIN
+    value: 10
+
+  -
+    type: STDOUT
+    value: 20
+
+  - 
+    type: EXIT
+    value: 0
+    
+-
+  -
+    type: STDIN
+    value: 20
+
+  -
+    type: STDOUT
+    value: 40
+
+  - 
+    type: EXIT
+    value: 0

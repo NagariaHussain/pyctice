@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyctise</title>
+    <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="editor" class="m-2">import os
+
+print("Hello, world")
+    </div>
+
+    <button id="reset-button" class="btn btn-primary m-2">Submit</button>
+    <button id="reset" class="btn">Reset</button>
+    <br>
+    <textarea 
+    name="markdown" 
+    id="mkarea" 
+    cols="50" 
+    rows="10" 
+    class="form-control m-2">
+    </textarea>
+    <br>
+    <button id="genHTMLButton" class="btn btn-primary m-2">Generate HTML</button>
+    <button id="clearButton" class="btn">Clear</button>
+
+    <div id="mkd" class="markdown-body p-5">
+    </div>
+    <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" crossorigin="anonymous"
+        integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U="></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script type="module">
+        // import { Octokit } from "https://cdn.pika.dev/@octokit/core";
+
+        // // GITHUB TOKEN
+        // const GHTOKEN = "NOOOOO";
+
+        // const octokit = new Octokit({ auth: GHTOKEN });
+
+
+        document.getElementById("genHTMLButton").addEventListener('click', function () {
+            var converter = new showdown.Converter(),
+                text = document.getElementById("mkarea").value,
+                html = converter.makeHtml(text);
+            document.getElementById("mkd").innerHTML = html;
+        });
+
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>
