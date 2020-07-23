@@ -13,23 +13,3 @@ print(markdown.markdown('''
 * 3
 [Link](http://google.com "Title text")
 '''))
-
-import random
- 
-highest = 10
-answer = random.randint(1, highest)
-print(answer)   # TODO: Remove after testing
- 
-print("Please guess number between 1 and {}: ".format(highest))
-guess = int(input())
- 
-while guess != answer:
-    if guess < answer and guess != 0:
-        print("Please guess higher")
-        guess = int(input())
-    elif guess == 0:
-        quit()
-    else:
-        print("Please guess lower")
-        guess = int(input())
-print("You guessed the number correctly")
