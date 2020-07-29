@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1>Index</h1>
+    <p class="important">
+      Welcome to my awesome homepage.
+    </p>
+    <button id="next">Go to next page</button>
+    <script>
+        const nextButton = document.getElementById("next");
+        nextButton.addEventListener('click', function() {
+            fetch('/questions')
+            .then((res) => res.text())
+            .then((html) => {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                
+                let newBody = doc.getElementsByTagName('body')[0];
+                
+                history.pushState({}, 'Questions', 'questions');
+                document.getElementsByTagName('html')[0].innerHTML = html;
+
+            })
+            .catch((e) => console.log(e));
+        });
+    </script>
+{% endblock %}
